@@ -9,3 +9,4 @@ This bot is a project for my Computer Science classes. It is a music bot for dis
 4. Install all the dependencies using `npm i` or `yarn`
 5. Rename `config-template.json` to `config.json` and `info-template.json` to `info.json` and fill in the values
 6. Then you can run the bot using `node index.js`
+7. Generate your invite link on the [discord developers](https://discord.com/developers) OAuth2 page, check scope `bot` and give it the `Administrator` permission to avoid any potential issues.
