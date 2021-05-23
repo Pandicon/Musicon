@@ -34,7 +34,7 @@ module.exports = {
                     )
                     .setColor(error)
                     .setDescription(`No song is currently being played.`)
-                    .setFooter("⠀", client.user.displayAvatarURL({
+                    .setFooter(client.user.tag, client.user.displayAvatarURL({
                         dynamic: true
                     }))
             )
@@ -50,7 +50,7 @@ module.exports = {
                     )
                     .setColor(error)
                     .setDescription(`You must be in a voice channel to vote to skip songs.`)
-                    .setFooter("⠀", client.user.displayAvatarURL({
+                    .setFooter(client.user.tag, client.user.displayAvatarURL({
                         dynamic: true
                     }))
             )
@@ -66,7 +66,7 @@ module.exports = {
                     )
                     .setColor(error)
                     .setDescription(`You must be in the same voice channel as me to vote to skip songs.`)
-                    .setFooter("⠀", client.user.displayAvatarURL({
+                    .setFooter(client.user.tag, client.user.displayAvatarURL({
                         dynamic: true
                     }))
             )
@@ -88,7 +88,7 @@ module.exports = {
                 )
                 .setColor(error)
                 .setDescription(`You already voted to skip this song.`)
-                .setFooter("⠀", client.user.displayAvatarURL({
+                .setFooter(client.user.tag, client.user.displayAvatarURL({
                     dynamic: true
                 }))
 
@@ -108,7 +108,7 @@ module.exports = {
                 )
                 .setColor(success)
                 .setDescription(`Successfully skipped the song!`)
-                .setFooter("⠀", client.user.displayAvatarURL({
+                .setFooter(client.user.tag, client.user.displayAvatarURL({
                     dynamic: true
                 }))
 
@@ -125,7 +125,7 @@ module.exports = {
                 )
                 .setColor(warning)
                 .setDescription(`Successfully voted to skip the song! ${currentVotes} out of ${neededVotesGuild[guildID]} ${neededVotesGuild[guildID] > 1 ? "people" : "person"} needed to skip the song already voted.`)
-                .setFooter("⠀", client.user.displayAvatarURL({
+                .setFooter(client.user.tag, client.user.displayAvatarURL({
                     dynamic: true
                 }))
 
