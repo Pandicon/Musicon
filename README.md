@@ -7,3 +7,4 @@ This bot is a project for my Computer Science classes. It is a music bot for dis
     - You can also fork this repository
 3. Install all the dependencies using `npm i` or `yarn`
 4. Rename `config-template.json` to `config.json` and `info-template.json` to `info.json` and fill in the values
+5. Then you can run the bot using `node index.js`
