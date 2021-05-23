@@ -1,3 +1,10 @@
+const {
+    success,
+    warning,
+    error
+} = require("@conf/colors.json")
+const Discord = require('discord.js');
+
 module.exports = {
     commands: ['autoplay', "ap"],
     category: 'music',
@@ -14,9 +21,54 @@ module.exports = {
     description: "Toggles the autoplay feature (playing related videos once the queue ends)",
     exampleUse: "",
     callback: (message, args, text, client, distube) => {
-        if (!message.member.voice.channel) return message.reply(`you must be in a voice channel to toggle the autoplay.`);
-        if (message.guild.me.voice.channel && message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(`you must be in the same voice channel as me to toggle the autoplay.`);
-        if(!distube.isPlaying(message)) return message.reply("can't toggle autoplay if I'm not playing any songs.")
+        if (!message.member.voice.channel) {
+            return message.channel.send(
+                new Discord.MessageEmbed()
+                    .setAuthor(
+                        message.member.nickname || message.author.username,
+                        message.author.displayAvatarURL({
+                            dynamic: true
+                        })
+                    )
+                    .setColor(error)
+                    .setDescription(`You must be in a voice channel to toggle autoplay.`)
+                    .setFooter(client.user.tag, client.user.displayAvatarURL({
+                        dynamic: true
+                    }))
+            )
+        }
+        if (message.guild.me.voice.channel && message.member.voice.channel.id != message.guild.me.voice.channel.id) {
+            return message.channel.send(
+                new Discord.MessageEmbed()
+                    .setAuthor(
+                        message.member.nickname || message.author.username,
+                        message.author.displayAvatarURL({
+                            dynamic: true
+                        })
+                    )
+                    .setColor(error)
+                    .setDescription(`You must be in the same voice channel as me to toggle the autoplay.`)
+                    .setFooter(client.user.tag, client.user.displayAvatarURL({
+                        dynamic: true
+                    }))
+            )
+        }
+        if(!distube.isPlaying(message)) {
+            return message.channel.send(
+                new Discord.MessageEmbed()
+                    .setAuthor(
+                        message.member.nickname || message.author.username,
+                        message.author.displayAvatarURL({
+                            dynamic: true
+                        })
+                    )
+                    .setColor(error)
+                    .setDescription(`Can't toggle autoplay if I'm not playing any songs.`)
+                    .setFooter(client.user.tag, client.user.displayAvatarURL({
+                        dynamic: true
+                    }))
+            )
+        }
         let mode = distube.toggleAutoplay(message);
         if(args[0]) {
             let toggle = args[0].toLowerCase();
