@@ -23,9 +23,54 @@ module.exports = {
     description: "Votes to skip the current song",
     exampleUse: "",
     callback: async (message, args, text, client, distube) => {
-        if (!distube.isPlaying(message)) return message.reply(`no song is currently being played.`)
-        if (!message.member.voice.channel) return message.reply(`you must be in a voice channel to vote to skip songs.`);
-        if (message.guild.me.voice.channel && message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(`you must be in the same voice channel as me to vote to skip songs.`);
+        if (!distube.isPlaying(message)) {
+            return message.channel.send(
+                new Discord.MessageEmbed()
+                    .setAuthor(
+                        message.member.nickname || message.author.username,
+                        message.author.displayAvatarURL({
+                            dynamic: true
+                        })
+                    )
+                    .setColor(error)
+                    .setDescription(`No song is currently being played.`)
+                    .setFooter("⠀", client.user.displayAvatarURL({
+                        dynamic: true
+                    }))
+            )
+        }
+        if (!message.member.voice.channel) {
+            return message.channel.send(
+                new Discord.MessageEmbed()
+                    .setAuthor(
+                        message.member.nickname || message.author.username,
+                        message.author.displayAvatarURL({
+                            dynamic: true
+                        })
+                    )
+                    .setColor(error)
+                    .setDescription(`You must be in a voice channel to vote to skip songs.`)
+                    .setFooter("⠀", client.user.displayAvatarURL({
+                        dynamic: true
+                    }))
+            )
+        }
+        if (message.guild.me.voice.channel && message.member.voice.channel.id != message.guild.me.voice.channel.id) {
+            return message.channel.send(
+                new Discord.MessageEmbed()
+                    .setAuthor(
+                        message.member.nickname || message.author.username,
+                        message.author.displayAvatarURL({
+                            dynamic: true
+                        })
+                    )
+                    .setColor(error)
+                    .setDescription(`You must be in the same voice channel as me to vote to skip songs.`)
+                    .setFooter("⠀", client.user.displayAvatarURL({
+                        dynamic: true
+                    }))
+            )
+        }
         const guildID = message.guild.id;
         const authorID = message.author.id;
         const membersInChannel = message.member.voice.channel.members.size - 1;
@@ -36,13 +81,16 @@ module.exports = {
         if (votes[guildID].includes(authorID)) {
             const embed = new Discord.MessageEmbed()
                 .setAuthor(
-                    message.guild.me.nickname || client.user.username,
-                    client.user.displayAvatarURL({
+                    message.member.nickname || message.author.username,
+                    message.author.displayAvatarURL({
                         dynamic: true
                     })
                 )
                 .setColor(error)
                 .setDescription(`You already voted to skip this song.`)
+                .setFooter("⠀", client.user.displayAvatarURL({
+                    dynamic: true
+                }))
 
             message.channel.send(embed);
             return
@@ -53,13 +101,16 @@ module.exports = {
         if (currentVotes >= neededVotesGuild[guildID]) {
             const embed = new Discord.MessageEmbed()
                 .setAuthor(
-                    message.guild.me.nickname || client.user.username,
-                    client.user.displayAvatarURL({
+                    message.member.nickname || message.author.username,
+                    message.author.displayAvatarURL({
                         dynamic: true
                     })
                 )
                 .setColor(success)
                 .setDescription(`Successfully skipped the song!`)
+                .setFooter("⠀", client.user.displayAvatarURL({
+                    dynamic: true
+                }))
 
             message.channel.send(embed);
             distube.skip(message);
@@ -67,13 +118,16 @@ module.exports = {
         } else {
             const embed = new Discord.MessageEmbed()
                 .setAuthor(
-                    message.guild.me.nickname || client.user.username,
-                    client.user.displayAvatarURL({
+                    message.member.nickname || message.author.username,
+                    message.author.displayAvatarURL({
                         dynamic: true
                     })
                 )
                 .setColor(warning)
                 .setDescription(`Successfully voted to skip the song! ${currentVotes} out of ${neededVotesGuild[guildID]} ${neededVotesGuild[guildID] > 1 ? "people" : "person"} needed to skip the song already voted.`)
+                .setFooter("⠀", client.user.displayAvatarURL({
+                    dynamic: true
+                }))
 
             message.channel.send(embed);
             return
