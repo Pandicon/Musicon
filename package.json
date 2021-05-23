@@ -1,0 +1,33 @@
+{
+  "name": "musicon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mkpanda",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.5.0",
+    "@top-gg/sdk": "^3.0.9",
+    "date-fns": "^2.19.0",
+    "dblapi.js": "^2.4.1",
+    "discord.js": "^12.5.3",
+    "distube": "^2.8.13",
+    "ffmpeg-static": "^4.3.0",
+    "module-alias": "^2.2.2",
+    "moment": "^2.27.0",
+    "ms": "^2.1.2",
+    "node-fetch": "^2.6.1",
+    "node-superfetch": "^0.1.10"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@util": "./util",
+    "@schemas": "./schemas",
+    "@commands": "./commands",
+    "@events": "./events",
+    "@conf": "./conf"
+  }
+}

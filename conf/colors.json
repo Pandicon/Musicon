@@ -1,0 +1,9 @@
+{
+    "missingPermsColorEmbed": "#E23636",
+    "cooldownColorEmbed": "#EDB95E",
+    "success": "#82DD55",
+    "warning": "#EDB95E",
+    "error": "#E23636",
+    "playSong": "#F7452D",
+    "defaultColor": "#F7452D"
+}

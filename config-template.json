@@ -1,0 +1,6 @@
+{
+    "token": "YOUR_TOKEN",
+    "version": "1.0.0",
+    "prefix": "YOUR_GLOBAL_PREFIX",
+    "topGgApiToken": "YOUR_TOPGG_TOKEN"
+}
