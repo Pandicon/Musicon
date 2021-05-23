@@ -4,10 +4,7 @@ const {
     playSong: playSongColor
 } = require("@conf/colors.json")
 
-const status = (queue) => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter || "Off"}\` | Loop: \`${queue.repeatMode ? queue.repeatMode == 2 ? "All Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
-
 // DisTubeOptions.searchSongs = true
-
 module.exports = distube => {
     distube.on("searchResult", (message, result) => {
         let i = 0;

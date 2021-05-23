@@ -14,8 +14,8 @@ module.exports = {
     description: "Plays a song",
     exampleUse: "",
     callback: (message, args, text, client, distube) => {
-        if(!message.member.voice.channel) return message.reply(`you must be in a voice channel to play songs.`);
-        if(message.guild.me.voice.channel && message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(`you must be in the same voice channel as me to play songs.`);
+        if (!message.member.voice.channel) return message.reply(`you must be in a voice channel to play songs.`);
+        if (message.guild.me.voice.channel && message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(`you must be in the same voice channel as me to play songs.`);
         distube.play(message, args.join(" "));
     }
 }

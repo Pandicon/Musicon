@@ -14,9 +14,9 @@ module.exports = {
     description: "Pauses the current song",
     exampleUse: "",
     callback: (message, args, text, client, distube) => {
-        if(!message.member.voice.channel) return message.reply(`you must be in a voice channel to interact with songs.`);
-        if(message.guild.me.voice.channel && message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(`you must be in the same voice channel as me to interact with songs.`);
-        if(distube.isPaused(message)) return message.reply("the song is already paused.");
+        if (!message.member.voice.channel) return message.reply(`you must be in a voice channel to interact with songs.`);
+        if (message.guild.me.voice.channel && message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(`you must be in the same voice channel as me to interact with songs.`);
+        if (distube.isPaused(message)) return message.reply("the song is already paused.");
         distube.pause(message);
         console.log(message.member.voice.channel);
         return message.reply("successfully paused the song.");
