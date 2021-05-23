@@ -10,7 +10,7 @@ module.exports = {
     permissions: [],
     requiredRoles: [],
     botPermissions: [],
-    botPermissionError: [],
+    botPermissionError: "",
     description: "Shows the bot and API ping",
     exampleUse: "**Command:** <prefix>ping\n**Example response:** **Bot latency:** 205ms, **API latency:** 162ms",
     callback: (message, args, text, client) => {

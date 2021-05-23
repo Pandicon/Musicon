@@ -19,7 +19,7 @@ module.exports = {
     permissions: ["SPEAK"],
     requiredRoles: [],
     botPermissions: [],
-    botPermissionError: [],
+    botPermissionError: "",
     description: "Votes to skip the current song",
     exampleUse: "",
     callback: async (message, args, text, client, distube) => {

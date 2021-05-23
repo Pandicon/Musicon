@@ -21,7 +21,7 @@ module.exports = {
   permissions: [],
   requiredRoles: [],
   botPermissions: [],
-  botPermissionError: [],
+  botPermissionError: "",
   description: "Shows the list of commands in the bot",
   callback: async (message, arguments, text, client) => {
     var totalCommands = 0;

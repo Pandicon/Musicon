@@ -92,7 +92,7 @@ module.exports = {
     permissions: [],
     requiredRoles: [],
     botPermissions: [],
-    botPermissionError: [],
+    botPermissionError: "",
     description: "Returns the current queue",
     exampleUse: "",
     callback: (message, args, text, client, distube) => {

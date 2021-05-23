@@ -10,7 +10,7 @@ module.exports = {
     permissions: ["SPEAK"],
     requiredRoles: [],
     botPermissions: [],
-    botPermissionError: [],
+    botPermissionError: "",
     description: "Toggles the autoplay feature (playing related videos once the queue ends)",
     exampleUse: "",
     callback: (message, args, text, client, distube) => {

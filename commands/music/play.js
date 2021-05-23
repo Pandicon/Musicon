@@ -10,7 +10,7 @@ module.exports = {
     permissions: ["SPEAK"],
     requiredRoles: [],
     botPermissions: [],
-    botPermissionError: [],
+    botPermissionError: "",
     description: "Plays a song",
     exampleUse: "",
     callback: (message, args, text, client, distube) => {

@@ -18,7 +18,7 @@ module.exports = {
     permissions: [],
     requiredRoles: [],
     botPermissions: [],
-    botPermissionError: [],
+    botPermissionError: "",
     description: "Sends you the links you can use to invite the bot to your server",
     callback: (message, args, text, client) => {
         const guildsSize = client.guilds.cache.size
