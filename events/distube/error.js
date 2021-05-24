@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const skip = require("@commands/music/skip.js")
 const {
     error: errorColor
 } = require("@conf/colors.json")
