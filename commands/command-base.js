@@ -1,8 +1,8 @@
-const { prefix: globalPrefix } = require('../config.json')
-const guildPrefixes = {}
-const Discord = require('discord.js')
-const basic = require("../util/basic.js")
-const { missingPermsColorEmbed, cooldownColorEmbed } = require("@conf/colors.json")
+const { prefix: globalPrefix } = require('../config.json');
+const guildPrefixes = {};
+const Discord = require('discord.js');
+const basic = require("../util/basic.js");
+const { missingPermsColorEmbed, cooldownColorEmbed } = require("@conf/colors.json");
 const cooldowns = new Set();
 
 const validatePermissions = (permissions) => {
@@ -38,11 +38,11 @@ const validatePermissions = (permissions) => {
     'MANAGE_ROLES',
     'MANAGE_WEBHOOKS',
     'MANAGE_EMOJIS',
-  ]
+  ];
 
   for (const permission of permissions) {
     if (!validPermissions.includes(permission)) {
-      throw new Error(`Unknown permission node "${permission}"`)
+      throw new Error(`Unknown permission node "${permission}"`);
     }
   }
 }
@@ -61,41 +61,41 @@ module.exports = (client, commandOptions, distube) => {
     callback,
     botPermissions = [],
     botPermissionsError = "I don't have enough permissions to execute this command. Please grant me the administrator permissions if you want to avoid this issue in the future.",
-  } = commandOptions
+  } = commandOptions;
 
   // Ensure the command and aliases are in an array
   if (typeof commands === 'string') {
-    commands = [commands]
+    commands = [commands];
   }
 
-  console.log(`Registering command "${commands[0]}"`)
+  console.log(`Registering command "${commands[0]}"`);
 
   // Ensure the permissions are in an array and are all valid
   if (permissions.length) {
     if (typeof permissions === 'string') {
-      permissions = [permissions]
+      permissions = [permissions];
     }
 
-    validatePermissions(permissions)
+    validatePermissions(permissions);
   }
 
   if (botPermissions.length) {
     if (typeof botPermissions === 'string') {
-      botPermissions = [botPermissions]
+      botPermissions = [botPermissions];
     }
 
-    validatePermissions(botPermissions)
+    validatePermissions(botPermissions);
   }
 
   // Listen for messages
   client.on('message', async(message) => {
     if(message.channel.type == "dm") return;
     if(message.author.bot) return;
-    const { member, content, guild } = message
-    const prefix = guildPrefixes[guild.id] || globalPrefix
+    const { member, content, guild } = message;
+    const prefix = guildPrefixes[guild.id] || globalPrefix;
 
     for (const alias of commands) {
-      const command = `${prefix}${alias.toLowerCase()}`
+      const command = `${prefix}${alias.toLowerCase()}`;
 
       if (
         content.toLowerCase().startsWith(`${command} `) ||
@@ -105,13 +105,13 @@ module.exports = (client, commandOptions, distube) => {
 
         // Ensure the bot can send messages
         if (!message.guild.me.hasPermission("SEND_MESSAGES")) {
-          const dm = await message.author.createDM()
+          const dm = await message.author.createDM();
           try {
-            dm.send(`I wasn't able to execute your command in the \`${message.guild.name}\` server because I am missing the send messages permissions.`)
+            dm.send(`I wasn't able to execute your command in the \`${message.guild.name}\` server because I am missing the send messages permissions.`);
           } catch(error) {
-            console.log(error)
+            console.error(error);
           }
-          return
+          return;
         }
 
         if(cooldown) {
@@ -186,10 +186,10 @@ module.exports = (client, commandOptions, distube) => {
         }
 
         // Split on any number of spaces
-        const arguments = content.split(/[ ]+/)
+        const arguments = content.split(/[ ]+/);
 
         // Remove the command which is the first index
-        arguments.shift()
+        arguments.shift();
 
         // Ensure we have the correct number of arguments
         if (
@@ -200,13 +200,13 @@ module.exports = (client, commandOptions, distube) => {
           let expectedArgsTemp = expectedArgs;
           if(typeof expectedArgsTemp == 'string') expectedArgsTemp = [expectedArgsTemp];
           expectedArgsTemp = expectedArgsTemp[0];
-          console.log(expectedArgs, expectedArgs.includes("<alias>"))
+          console.log(expectedArgs, expectedArgs.includes("<alias>"));
           let freq = basic.countFreq("<alias>", expectedArgsTemp);
           if(freq < 2) argsText = `\`${prefix}${alias} ${expectedArgs}\``
           else {
-            argsText = "one of the following options:\n\`\`\`"
-            argsText += expectedArgsTemp.replace(/<alias>/g, `${prefix}${alias}`)
-            argsText += `\`\`\``
+            argsText = "one of the following options:\n\`\`\`";
+            argsText += expectedArgsTemp.replace(/<alias>/g, `${prefix}${alias}`);
+            argsText += `\`\`\``;
           }
           const embed = new Discord.MessageEmbed()
             .setColor(missingPermsColorEmbed)
@@ -219,46 +219,46 @@ module.exports = (client, commandOptions, distube) => {
         }
 
         // Handle the custom command code
-        callback(message, arguments, arguments.join(' '), client, distube)
+        callback(message, arguments, arguments.join(' '), client, distube);
         if(cooldown) {
-          let key = `${message.author.id}-${commands[0]}`
+          let key = `${message.author.id}-${commands[0]}`;
           if(isGlobalCooldown) {
-            cooldowns.add(key)
+            cooldowns.add(key);
           } else {
-            key = `${message.author.id}-${message.guild.id}-${commands[0]}`
-            cooldowns.add(key)
+            key = `${message.author.id}-${message.guild.id}-${commands[0]}`;
+            cooldowns.add(key);
           }
           setTimeout(() => {
             cooldowns.delete(key);
           }, cooldown);
         }
 
-        return
+        return;
       }
     }
   })
 }
 
 module.exports.updateCache = (guildId, newPrefix) => {
-  guildPrefixes[guildId] = newPrefix
+  guildPrefixes[guildId] = newPrefix;
 }
 
 module.exports.loadPrefixes = async (client) => {
   for (const guild of client.guilds.cache) {
-    const guildID = guild[1].id
+    const guildID = guild[1].id;
 
-    const result = null //await commandPrefixSchema.findOne({ _id: guildID})
+    const result = null; //await commandPrefixSchema.findOne({ _id: guildID});
     if(result) {
-      guildPrefixes[guildID] = result.prefix
+      guildPrefixes[guildID] = result.prefix;
     } else {
-      guildPrefixes[guildID] = globalPrefix
+      guildPrefixes[guildID] = globalPrefix;
     }
   }
 
-  console.log(guildPrefixes)
+  console.log(guildPrefixes);
 }
 
 module.exports.getGuildPrefix = (guildID) => {
-  const prefix = guildPrefixes[guildID] || globalPrefix
-  return prefix
+  const prefix = guildPrefixes[guildID] || globalPrefix;
+  return prefix;
 }
