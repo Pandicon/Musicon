@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const skip = require("@commands/music/skip.js")
 const {
     addToQueue
 } = require("@conf/colors.json")
@@ -28,7 +27,4 @@ module.exports = distube => {
         .setFooter(`Published by ${song.info.videoDetails.ownerChannelName}, currently has ${parseInt(song.info.videoDetails.viewCount).toLocaleString()} view${song.info.videoDetails.viewCount == 1 ? "" : "s"}`)
         message.channel.send(embed);
     })
-    /*message.channel.send(
-        `Added ${song.name} - \`${song.formattedDuration}\` to the queue by \`${song.user.tag}\``
-    )*/
 }
