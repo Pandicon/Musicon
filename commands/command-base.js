@@ -90,6 +90,7 @@ module.exports = (client, commandOptions, distube) => {
   // Listen for messages
   client.on('message', async(message) => {
     if(message.channel.type == "dm") return;
+    if(message.author.bot) return;
     const { member, content, guild } = message
     const prefix = guildPrefixes[guild.id] || globalPrefix
 
