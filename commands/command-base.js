@@ -200,7 +200,6 @@ module.exports = (client, commandOptions, distube) => {
           let expectedArgsTemp = expectedArgs;
           if(typeof expectedArgsTemp == 'string') expectedArgsTemp = [expectedArgsTemp];
           expectedArgsTemp = expectedArgsTemp[0];
-          console.log(expectedArgs, expectedArgs.includes("<alias>"));
           let freq = basic.countFreq("<alias>", expectedArgsTemp);
           if(freq < 2) argsText = `\`${prefix}${alias} ${expectedArgs}\``
           else {
