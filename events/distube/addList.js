@@ -1,13 +1,13 @@
 const Discord = require('discord.js');
 const skip = require("@commands/music/skip.js")
 const {
-    playSong: playSongColor
+    addToQueue
 } = require("@conf/colors.json")
 
 module.exports = distube => {
     distube.on("addList", async(message, queue, playlist) => {
         const embed = new Discord.MessageEmbed()
-        .setColor(playSongColor)
+        .setColor(addToQueue)
         .setAuthor(
             (await message.guild.members.fetch(playlist.user.id)).nickname || playlist.user.username,
             playlist.user.displayAvatarURL({
