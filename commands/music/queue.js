@@ -96,7 +96,6 @@ module.exports = {
     description: "Returns the current queue",
     exampleUse: "",
     callback: (message, args, text, client, distube) => {
-        let queue = distube.getQueue(message);
         let page = parseInt(args[0]);
         if (!page || isNaN(page) || page < 1) page = 1;
         handleQueue(distube, message, page);
