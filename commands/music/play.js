@@ -1,3 +1,8 @@
+const Discord = require('discord.js');
+const {
+    error: errorColor
+} = require("@conf/colors.json")
+
 module.exports = {
     commands: ["play", "p"],
     category: "music",
@@ -14,8 +19,34 @@ module.exports = {
     description: "Plays a song",
     exampleUse: "",
     callback: (message, args, text, client, distube) => {
-        if (!message.member.voice.channel) return message.reply(`you must be in a voice channel to play songs.`);
-        if (message.guild.me.voice.channel && message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.reply(`you must be in the same voice channel as me to play songs.`);
+        if (!message.member.voice.channel) return message.channel.send(
+            new Discord.MessageEmbed()
+                .setAuthor(
+                    message.member.nickname || message.author.username,
+                    message.author.displayAvatarURL({
+                        dynamic: true
+                    })
+                )
+                .setColor(errorColor)
+                .setDescription("You must be in a voice channel to play songs.")
+                .setFooter(message.guild.me.user.tag, message.guild.me.user.displayAvatarURL({
+                    dynamic: true
+                }))
+        );
+        if (message.guild.me.voice.channel && message.member.voice.channel.id != message.guild.me.voice.channel.id) return message.channel.send(
+            new Discord.MessageEmbed()
+                .setAuthor(
+                    message.member.nickname || message.author.username,
+                    message.author.displayAvatarURL({
+                        dynamic: true
+                    })
+                )
+                .setColor(errorColor)
+                .setDescription("You must be in the same voice channel as me to play songs.")
+                .setFooter(message.guild.me.user.tag, message.guild.me.user.displayAvatarURL({
+                    dynamic: true
+                }))
+        );
         distube.play(message, args.join(" "));
     }
 }
