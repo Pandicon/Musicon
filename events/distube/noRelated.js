@@ -7,14 +7,14 @@ const {
 module.exports = distube => {
     distube.on("noRelated", message => {
         const embed = new Discord.MessageEmbed()
-        .setColor(warning)
-        .setAuthor(
-            message.guild.me.user.tag,
-            message.guild.me.user.displayAvatarURL({
-                dynamic: true
-            })
-        )
-        .setDescription("Can't find related videos to play. Stop playing music.")
+            .setColor(warning)
+            .setAuthor(
+                message.guild.me.user.tag,
+                message.guild.me.user.displayAvatarURL({
+                    dynamic: true
+                })
+            )
+            .setDescription("Can't find related videos to play. Stop playing music.")
         message.channel.send(embed);
     })
 }
