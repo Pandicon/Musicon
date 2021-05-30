@@ -18,8 +18,7 @@ module.exports = {
     requiredRoles: [],
     botPermissions: [],
     botPermissionError: "",
-    description: "",
-    exampleUse: "**Command:** <prefix>ping\n**Example response:** **Bot latency:** 205ms, **API latency:** 162ms",
+    description: "Creates a button that will redirect users to your github page when clicked.",
     callback: async(message, args, text, client) => {
         const button = new MessageButton()
             .setStyle('url')
