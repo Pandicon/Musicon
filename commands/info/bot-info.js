@@ -37,7 +37,7 @@ module.exports = {
                 name: "Bot tag",
                 value: client.user.tag
             }, {
-                name: `Creator${creators == 1 ? "" : "s"}`,
+                name: `Creator${creators.length == 1 ? "" : "s"}`,
                 value: creators.join("\n")
             }, {
                 name: "Version",
