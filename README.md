@@ -7,6 +7,6 @@ This bot is a project for my Computer Science classes. It is a music bot for dis
     - You can also fork this repository
 3. You can then either `cd` into the repository folder, or navigate to it in file manager and run the `cmd.bat` file. That will open up the windows console already "cded" into the folder.
 4. Install all the dependencies using `npm i` or `yarn`
-5. Rename `config-template.json` to `config.json`, `info-template.json` to `info.json` and `.env-template` to `.env` and fill in the values
+5. Change the values in the `config.json` and `info.json` files and then rename `.env-template` to `.env` and fill in the values
 6. Then you can run the bot using `node index.js`
 7. Generate your invite link on the [discord developers](https://discord.com/developers) OAuth2 page, check scope `bot` and give it the `Administrator` permission to avoid any potential issues.
