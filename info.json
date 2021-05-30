@@ -4,5 +4,6 @@
     "botAddLink": "https://discord.com/oauth2/authorize/?permissions=8&scope=bot&client_id=845575204653760512",
     "botAddLinkTopGG": "YOUR_TOPGG_LINK",
     "githubAccount": "https://github.com/Pandicon",
-    "sourceCodeLink": "https://github.com/Pandicon/Musicon"
+    "sourceCodeLink": "https://github.com/Pandicon/Musicon",
+    "creators": ["mkpanda#4841"]
 }
