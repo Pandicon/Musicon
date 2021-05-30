@@ -13,14 +13,17 @@
     "@top-gg/sdk": "^3.0.9",
     "date-fns": "^2.19.0",
     "dblapi.js": "^2.4.1",
+    "discord-buttons": "^2.4.1",
     "discord.js": "^12.5.3",
     "distube": "^2.8.13",
+    "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.3.0",
     "module-alias": "^2.2.2",
     "moment": "^2.27.0",
     "ms": "^2.1.2",
     "node-fetch": "^2.6.1",
-    "node-superfetch": "^0.1.10"
+    "node-superfetch": "^0.1.10",
+    "ytdl-core": "^4.8.2"
   },
   "_moduleAliases": {
     "@root": ".",

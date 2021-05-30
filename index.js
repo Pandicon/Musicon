@@ -17,6 +17,9 @@ const distube = new Distube(client, {
     searchSongs: true,
     emitNewSongOnly: true
 });
+require('discord-buttons')(client);
+const dotenv = require('dotenv');
+dotenv.config();
 
 const config = require("./config.json");
 
@@ -25,9 +28,8 @@ const prefix = config.prefix;
 const commandBase = require("@commands/command-base");
 const loadCommands = require("@commands/load-commands.js");
 const loadEvents = require("@events/load-events.js")
-const {
-    topGgApiToken
-} = require("@root/config.json");
+const topGgApiToken = process.env.TOPGGAPITOKEN;
+const token = process.env.BOT_TOKEN;
 
 const Topgg = require(`@top-gg/sdk`);
 const api = new Topgg.Api(topGgApiToken);
@@ -79,4 +81,4 @@ client.on("ready", async () => {
     }, 300000);*/
 });
 
-client.login(config.token);
+client.login(token);
