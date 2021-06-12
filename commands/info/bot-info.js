@@ -18,7 +18,7 @@ module.exports = {
     commands: ["botinfo", "info"],
     category: 'info',
     expectedArgs: [],
-    permissionError: [],
+    permissionError: "",
     minArgs: 0,
     maxArgs: null,
     cooldown: null,

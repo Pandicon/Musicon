@@ -162,19 +162,18 @@ const runCommand = async (message, client, distube) => {
     if (!command) return;
 
     const {
-      permissionError = `you do not have permission to run this command.`,
         expectedArgs = '',
         minArgs = 0,
         maxArgs = null,
         permissions = [],
         requiredRoles = [],
         botPermissions = [],
-        botPermissionError = `I don't have enough permissions to run this command, to avoid this error in the future, please grant me administrator permissions`,
         cooldown = 0,
         isGlobalCooldown = false,
         callback,
     } = command;
-
+    const permissionError = command.permissionError || `you do not have permission to run this command.`;
+    const botPermissionError = command.botPermissionError || `I don't have enough permissions to run this command, to avoid this error in the future, please grant me administrator permissions`;
     if (message.channel.type == "dm") return;
     if (message.author.bot) return;
     const {
@@ -227,7 +226,6 @@ const runCommand = async (message, client, distube) => {
         }
       }
     }
-
     // Ensure the user has the required permissions
     for (const permission of permissions) {
       if (!member.hasPermission(permission)) {

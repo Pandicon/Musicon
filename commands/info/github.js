@@ -9,7 +9,7 @@ module.exports = {
     commands: ['github'],
     category: 'info',
     expectedArgs: [],
-    permissionError: [],
+    permissionError: "",
     minArgs: 0,
     maxArgs: null,
     cooldown: null, //null or time in milliseconds
