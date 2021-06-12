@@ -1,6 +1,7 @@
 const {
     sourceCodeLink,
-    creators
+    creators,
+    supportServerLink
 } = require("@root/info.json")
 const {
     MessageEmbed
@@ -51,6 +52,9 @@ module.exports = {
             }, {
                 name: "Source code",
                 value: sourceCodeLink
+            }, {
+                name: "Support server",
+                value: supportServerLink
             })
 
         message.channel.send(embed);
