@@ -23,7 +23,7 @@ module.exports = (client, commandOptions, distube) => {
     requiredRoles = [],
     callback,
     botPermissions = [],
-    botPermissionsError = "I don't have enough permissions to execute this command. Please grant me the administrator permissions if you want to avoid this issue in the future.",
+    botPermissionError = "I don't have enough permissions to execute this command. Please grant me the administrator permissions if you want to avoid this issue in the future.",
   } = commandOptions;
 
   // Ensure the command and aliases are in an array
@@ -254,7 +254,7 @@ const runCommand = async (message, client, distube) => {
               dynamic: true
             })
           )
-          .setDescription(botPermissionsError)
+          .setDescription(botPermissionError)
         return message.channel.send(embed);
       }
     }

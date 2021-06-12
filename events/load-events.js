@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const commandBase = require('@commands/command-base');
 
 module.exports = (client, distube) => {
     const commands = []
