@@ -16,14 +16,16 @@ module.exports = (client, distube) => {
         } else if (file !== baseFile && file !== 'load-commands.js') {
           const option = require(path.join(__dirname, dir, file))
           commands.push(option)
-          if(client) {
-            commandBase(client, option, distube)
+          if(client) { //differ between commands listing for the commands list command and commands loading on start
+            commandBase(option)
           }
         }
       }
     }
     
     readCommands('.')
-
+    if(client && distube) {
+      commandBase.listen(client, distube);
+    }
     return commands
 }
