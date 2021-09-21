@@ -1,5 +1,5 @@
 # Musicon
-This bot is a project for my Computer Science classes. It is a music bot for discord that lets you play songs and lists of songs in voice channels. I will continue improving the project as the due dates will progress :D
+This project is a music bot for discord that lets you play songs and lists of songs in voice channels.
 
 ## Running the bot yourself
 1. Install node.js and npm if they are not installed already. [node.js installer](https://nodejs.org/en/)
